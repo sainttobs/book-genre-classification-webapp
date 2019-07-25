@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Book Genre Classification</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
+        <script type="text/javascript">
+            var name = document.getElementById("book").value;           
+        </script>
+    </head>
+    <body>
+        <style type="text/css">
+            *{
+                font-family: 'Ubuntu', sans-serif;
+            }
+            #content{
+                text-align : center;
+            }
+            body{
+                text-align: center;
+                color: black;
+            }
+            #btn{
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 8px;
+                padding-right: 8px;
+                background-color: #A9BCF5;
+            }
+        </style>
+        <div id="container">
+            <div id="content">
+                <form method="post" action="{{ url_for('predict') }}">
+                  <label for="book"><h2>Please enter your Book Title</h2></label>
+                  <br>
+                  <textarea placeholder="Your Book Title" name="book" cols="40" rows="5" id ="book"></textarea/>
+                  <br>
+                  <input id="btn" type="submit" value="Get Genre"/>
+                </form>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
