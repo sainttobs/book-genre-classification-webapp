@@ -1,2 +1,2 @@
-# web: gunicorn app:app --log-file=-
-flask run
+web: gunicorn app:app --log-file=-
+# flask run
