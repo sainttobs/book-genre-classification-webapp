@@ -1,7 +1,12 @@
 <html>
     <head>
         <title>Book Genre Classification</title>
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
+        <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
         <script type="text/javascript">
             var name = document.getElementById("book").value;           
         </script>
@@ -11,31 +16,59 @@
             *{
                 font-family: 'Ubuntu', sans-serif;
             }
-            #content{
-                text-align : center;
+            /* Material Customization */
+            :root {
+                --pure-material-primary-rgb: 255, 191, 0;
+                --pure-material-onsurface-rgb: 0, 0, 0;
             }
-            body{
+
+            body {
+                align-items: center;
+                justify-content: center;
+                /* min-height: 100vh; */
+                background: url("https://res.cloudinary.com/finnhvman/image/upload/v1541930411/pattern.png");
+            }
+
+            .registration {
+                border-radius: 8px;
+                padding: 16px 48px;
+                margin-top: 100px;
+                box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+                overflow: hidden;
+                background-color: white;
+            }
+
+            h1 {
+                margin: 32px 0;
                 text-align: center;
-                color: black;
             }
-            #btn{
-                padding-top: 4px;
-                padding-bottom: 4px;
-                padding-left: 8px;
-                padding-right: 8px;
-                background-color: #A9BCF5;
+
+            .registration > label {
+                display: block;
+                margin: 24px 0;
+                width: 320px;
             }
+
+            button {
+                display: block !important;
+                text-align: center;
+            }
+
+
         </style>
-        <div id="container">
-            <div id="content">
-                <form method="post" action="{{ url_for('predict') }}">
-                  <label for="book"><h2>Please enter your Book Title</h2></label>
-                  <br>
-                  <textarea placeholder="Your Book Title" name="book" cols="40" rows="5" id ="book"></textarea/>
-                  <br>
-                  <input id="btn" type="submit" value="Get Genre"/>
-                </form>
-            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-10">
+                    <form class="registration" method="post" action="{{ url_for('predict') }}">
+                        <h1>👋 Book Classification</h1>
+                        <label class="pure-material-textfield-outlined">
+                            <span style="text-align: center">Book Title</span>
+                        </label>
+                        <input placeholder="Your Book Title" name="book" type="text" required>
+                        
+                        <button class="pure-material-button-contained btn btn-info" type="submit">Get Genre</button>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
