@@ -133,7 +133,6 @@ Sphinx==1.5.1
 SQLAlchemy==1.1.5
 statsmodels==0.6.1
 sympy==1.0
-tables==3.3.0
 tabulate==0.7.7
 tensorflow==1.1.0
 terminado==0.6
