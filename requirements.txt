@@ -3,3 +3,4 @@ Flask-Cors==3.0.2
 gunicorn==19.7.1
 pandas==0.25.0
 tflearn==0.3.1
+sklearn==0.0
