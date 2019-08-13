@@ -1,12 +1,27 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect
 from sklearn.externals import joblib
 from flask import Flask, render_template, request, url_for
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
+# from flask_pymongo import PyMongo
+from pymongo import MongoClient 
 
 
 app = Flask(__name__)
+
+# app.config["MONGO_URI"] = "mongodb://sainttobs:sainttobs123@ds117109.mlab.com:17109/project_erlaters"
+# app.config['MONGO_DBNAME'] = 'project_erlaters'
+
+# # Connect to MongoDB using Flask's PyMongo wrapper
+# mongo = PyMongo(app)
+# db = mongo.db
+# col = mongo.db["books"]
+# print ("MongoDB Database:", mongo.db)
+
+client = MongoClient("mongodb://sainttobs:sainttobs123@ds117109.mlab.com:17109/project_erlaters")
+db = client.project_erlaters
+print(db)
 
 data = pd.read_csv('book32-listing.csv',encoding = "ISO-8859-1")
 
@@ -45,9 +60,17 @@ vectorizer = TfidfVectorizer(min_df=2, max_features=70000, strip_accents='unicod
 vectors = vectorizer.fit_transform(data['everything'])   
 print (vectors.shape) 
 
+# def redirect_url():  
+#     return request.args.get('next') or \  
+#            request.referrer or \  
+#            url_for('form_submit')
+
 @app.route('/')
 def form():
-    return render_template('form_submit.html')
+	# Display all books in Database
+    books = db.books.find()
+
+    return render_template('form_submit.html', books = books)
 
 #return render_template('form_action.html', book=book)
 
@@ -62,7 +85,9 @@ def predict():
 	clf = joblib.load('best.pkl')
 	prediction = (clf.predict(arr))
 	prediction = le.inverse_transform(prediction)[0]
-	return jsonify({'Genre is ': (prediction)})
+	books = db.books
+	books.insert({"title":s, 'genre':prediction})
+	return redirect('/')
 
 if __name__ == '__main__':
 	clf = joblib.load('best.pkl')

@@ -21,6 +21,12 @@
                 --pure-material-primary-rgb: 255, 191, 0;
                 --pure-material-onsurface-rgb: 0, 0, 0;
             }
+            .thead{
+                font-size : 25px;
+            }
+            .tbody{
+                font-size : 15px;
+            }
 
             body {
                 align-items: center;
@@ -69,6 +75,27 @@
                         <button class="pure-material-button-contained btn btn-info" type="submit">Get Genre</button>
                     </form>
                 </div>
+            </div>
+            <div class="row" style="text-align: center">
+                <h2 style="text-align: center"><strong>Previously Classified Books</strong></h2>
+                <table style="text-align: center" class="table">
+                    <thead>
+                        <tr>
+                            <th class="thead">#</th>
+                            <th class="thead">Title</th>
+                            <th class="thead">Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr>
+                            <td class="tbody">1</td>
+                            <td class="tbody"><strong>{{ book['title'] }}</strong></td>
+                            <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
