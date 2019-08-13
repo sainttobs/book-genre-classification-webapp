@@ -86,6 +86,7 @@ def predict():
 	prediction = (clf.predict(arr))
 	prediction = le.inverse_transform(prediction)[0]
 	books = db.books
+	s = s.title()
 	books.insert({"title":s, 'genre':prediction})
 	return redirect('/')
 
