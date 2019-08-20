@@ -1,11 +1,17 @@
 <html>
     <head>
         <title>Book Genre Classification</title>
+
+<meta charset="UTF-8">
+
         <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
         <script type="text/javascript">
             var name = document.getElementById("book").value;           
@@ -69,15 +75,23 @@
                         <h1>👋 Book Classification</h1>
                         <label class="pure-material-textfield-outlined">
                             <span style="text-align: center">Book Title</span>
+                            <input placeholder="Your Book Title" name="book" type="text" required>
                         </label>
-                        <input placeholder="Your Book Title" name="book" type="text" required>
-                        
+                        <label class="pure-material-textfield-outlined">
+                            <input type="text" placeholder="Book Link" name="bookurl" id="book" required>
+                        </label>
+                        <label class="pure-material-textfield-outlined">
+                            <button id="upload_widget" class="cloudinary-button">Upload Book</button>
+                        </label>
+                        </br>
                         <button class="pure-material-button-contained btn btn-info" type="submit">Get Genre</button>
                     </form>
                 </div>
             </div>
             <div class="row" style="text-align: center">
                 <h2 style="text-align: center"><strong>Previously Classified Books</strong></h2>
+            </br>
+                <p>To download or read a book, click on the title</p>
                 <table style="text-align: center" class="table">
                     <thead>
                         <tr>
@@ -90,7 +104,7 @@
                         {% for book in books %}
                         <tr>
                             <td class="tbody">1</td>
-                            <td class="tbody"><strong>{{ book['title'] }}</strong></td>
+                            <td class="tbody"><a href="{{ book['url'] }}" target="_blank"><strong>{{ book['title'] }}</strong></a></td>
                             <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
                         </tr>
                         {% endfor %}
@@ -98,5 +112,29 @@
                 </table>
             </div>
         </div>
+        <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script> 
+        <script type="text/javascript">  
+            var myWidget = cloudinary.createUploadWidget({
+              cloudName: 'dtgd0f5rh', 
+              uploadPreset: 'bxwd1qmh'}, (error, result) => { 
+                if(error){
+                    console.log(error)
+                }
+                if (!error && result && result.event === "success") { 
+                  console.log('Done! Here is the image info: ' + result.info.public_id); 
+                  let url = 'https://res.cloudinary.com/dtgd0f5rh/image/upload/v1559275107/' + result.info.public_id
+                //   $('#cloud_img').attr('src', url)11
+                  $('#book').attr('value', url);
+                }
+              }
+            )
+            document.getElementById("upload_widget").addEventListener("click", function(){
+                myWidget.open();
+                $('#upload-widget').prop("disabled",true);
+
+
+              }, false);
+        </script>
+        
     </body>
 </html>

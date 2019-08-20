@@ -78,6 +78,7 @@ def form():
 @app.route('/predict', methods=['POST'])
 def predict():
 	s = request.form['book']
+	b = request.form['bookurl']
 	text = []
 	text.append(s)
 	text[0] = text[0].lower()
@@ -87,7 +88,7 @@ def predict():
 	prediction = le.inverse_transform(prediction)[0]
 	books = db.books
 	s = s.title()
-	books.insert({"title":s, 'genre':prediction})
+	books.insert({"title":s, 'genre':prediction,'url':b})
 	return redirect('/')
 
 if __name__ == '__main__':
