@@ -78,13 +78,22 @@
                             <input placeholder="Your Book Title" name="book" type="text" required>
                         </label>
                         <label class="pure-material-textfield-outlined">
+                            <span style="text-align: center">Book Link</span>
                             <input type="text" placeholder="Book Link" name="bookurl" id="book" required>
                         </label>
                         <label class="pure-material-textfield-outlined">
-                            <button id="upload_widget" class="cloudinary-button">Upload Book</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button id="upload_widget" class="cloudinary-button">Upload Book</button>
+                                </div>
+                                <div>
+                                    <label class="pure-material-textfield-outlined">
+                                            <button class="pure-material-button-contained btn btn-info" type="submit">Get Genre</button>
+                                    </label>
+                                </div>
+                            </div>
                         </label>
                         </br>
-                        <button class="pure-material-button-contained btn btn-info" type="submit">Get Genre</button>
                     </form>
                 </div>
             </div>
