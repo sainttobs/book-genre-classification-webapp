@@ -74,6 +74,10 @@ def form():
 
 #return render_template('form_action.html', book=book)
 
+@app.route('/signin')
+def signin():	
+	return render_template('admin.html')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
