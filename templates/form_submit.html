@@ -65,9 +65,81 @@
                 display: block !important;
                 text-align: center;
             }
+            *,
+::before,
+::after {box-sizing: border-box;}
+body {
+  color: #3f3f3f;
+  font: 16px/1.7 'Noto Sans JP' ,sans-serif;
+  margin: 0;
+}
+.fz0 {font-size: 0;}
+.w100p {width: 100%;}
+
+:root {
+  --color: #3f3f3f;
+  --header_mw: 675px;
+  --line_h: 2px;
+  --logo_w: 37px;
+  --menu_h: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  max-width: var(--header_mw);
+  margin: 0 auto;
+  position: fixed;
+  top: 5px;
+  left: 2.5%;
+  z-index: 2;
+}
+@media (min-width:700px) {header {left: calc(50% - calc(var(--header_mw) / 2));}}
+header::after {
+  content: "";
+  width: 100%;
+  height: var(--line_h);
+  background: var(--color);
+  position: absolute;
+  top: calc(50% - calc(var(--line_h) / 2));
+  left: 0;
+  z-index: -1;
+}
+.logo_c {
+  display: inline-block;
+  font-size: 0;
+  width: var(--logo_w);
+  height: var(--logo_w);
+  padding: 9px;
+  background: var(--color);
+  border-radius: 50%;
+}
+.navMenu {
+  display: inline-block;
+  color: #fff;
+  font-size: 13px;
+  line-height: var(--menu_h);
+  text-decoration: none;
+  vertical-align: top;
+  height: var(--menu_h);
+  padding: 0 13px;
+  background: var(--color);
+  border-radius: calc(var(--menu_h) / 2);
+}
+.navMenu + .navMenu {margin-left: 15px;}
 
 
         </style>
+        <header>
+            <span class="logo_c"><img src="https://ryoo.info/img/logo.svg" alt="loho" class="w100p"></span>
+            <div class="fz0">
+              <a href="" class="navMenu">about</a>
+              <a href="" class="navMenu">work</a>
+              <a href="" class="navMenu">contact</a>
+            </div>
+          </header>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-10">
