@@ -78,6 +78,15 @@ def form():
 def signin():	
 	return render_template('admin.html')
 
+@app.route('/login', methods=['POST'])
+def login():
+	name = request.form['name']
+	password = request.form['password']
+	if(name == 'admin' and password == 'pass123'):
+		books = db.books.find()
+		return render_template('dashboard.html', books = books)
+	else:
+		return redirect('/')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -86,7 +95,7 @@ def predict():
 	text = []
 	text.append(s)
 	text[0] = text[0].lower()
-	arr = (vectorizer.transform(text))
+	arr = (vectorizer.transform(text)) 
 	clf = joblib.load('best.pkl')
 	prediction = (clf.predict(arr))
 	prediction = le.inverse_transform(prediction)[0]

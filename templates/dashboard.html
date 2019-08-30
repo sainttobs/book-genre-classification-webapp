@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+  
+</head>
+    <body>
+        <style>
+            *{
+                font-family: 'Montserrat', sans-serif;
+            }
+        </style>
+        <h2 style="text-align: center">Admin Dashboard</h2>
+        <div class="container">
+            <div class="row">
+                <div>
+                    <table style="text-align: center" class="table">
+                        <thead>
+                            <tr>
+                                <th class="thead">#</th>
+                                <th class="thead">Book Link To Download</th>
+                                <th class="thead">Title</th>
+                                <th class="thead">Genre</th>
+                                <th class="thead">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for book in books %}
+                            <tr>
+                                <td class="tbody">1</td>
+                                <td class="tbody"><strong>{{ book['url'] }}</strong></td>
+                                <td class="tbody"><strong>{{ book['title'] }}</strong></td>
+                                <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
+                                <td class="tbody"><button class="btn btn-danger">Delete</button></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+ 
+    
+</html>
