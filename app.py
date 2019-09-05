@@ -91,7 +91,8 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-	return render_template('dashboard.html')
+	books = db.books.find()
+	return render_template('dashboard.html', books = books)
 
 
 @app.route('/delete/<Id>', methods=['GET'])
