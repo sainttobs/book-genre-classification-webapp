@@ -96,8 +96,9 @@ def dashboard():
 
 @app.route('/delete/<Id>', methods=['GET'])
 def delete(Id):
+	print(Id)
 	books = db.books
-	books.delete_one({_id : Id})
+	books.delete_one({'_id' : Id})
 	return redirect('/dashboard')
 
 
