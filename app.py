@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 # from flask_pymongo import PyMongo
 from pymongo import MongoClient 
+from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
@@ -99,7 +100,7 @@ def dashboard():
 def delete(Id):
 	print(Id)
 	books = db.books
-	books.remove({'_id' : ObjectId(Id)})
+	books.delete_one({'_id' : ObjectId(Id)})
 	return redirect('/dashboard')
 
 
