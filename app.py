@@ -88,6 +88,19 @@ def login():
 	else:
 		return redirect('/')
 
+
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
+
+
+@app.route('/delete/<Id>', methods=['GET'])
+def delete(Id):
+	books = db.books
+	books.delete_one({_id : Id})
+	return redirect('/dashboard')
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
 	s = request.form['book']
