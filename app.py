@@ -99,7 +99,7 @@ def dashboard():
 def delete(Id):
 	print(Id)
 	books = db.books
-	books.delete_one({'_id' : Id})
+	books.remove({'_id' : Id})
 	return redirect('/dashboard')
 
 
