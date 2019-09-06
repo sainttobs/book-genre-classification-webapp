@@ -44,7 +44,7 @@
                                 <td class="tbody"><strong>{{ book['url'] }}</strong></td>
                                 <td class="tbody"><strong>{{ book['title'] }}</strong></td>
                                 <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
-                                <td class="tbody"><a class="btn btn-danger" href="/delete/{{ book['_id'] }}">Delete</a></td>
+                                <td class="tbody"><a class="btn btn-danger" onclick="alert('Are you sure you want to delete this book')" href="/delete/{{ book['_id'] }}">Delete</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
