@@ -71,7 +71,7 @@ def form():
 	# Display all books in Database
     books = db.books.find()
 	count = len(books)
-	print(count)
+	print("BOOK COUNT" + count)
     return render_template('form_submit.html', books = books)
 
 #return render_template('form_action.html', book=book)
