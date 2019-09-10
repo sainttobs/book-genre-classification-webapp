@@ -243,11 +243,11 @@ header::after {
 
             var count = $('.num').length
             alert(count)
-            $('.testimonial').each(function(){
+            $('.num').each(function(){
 
-                $(this).append(count)
+                $(this).html(count)
                 count--
-                alert(count)
+                console.log(count)
 
 
             });
