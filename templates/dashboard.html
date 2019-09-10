@@ -44,25 +44,28 @@
                                 <td class="tbody"><strong>{{ book['url'] }}</strong></td>
                                 <td class="tbody"><strong>{{ book['title'] }}</strong></td>
                                 <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
-                                <td class="tbody"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ book['url'] }}">
-                                        Delete
-                                      </button>
-                                    <div class="modal fade" id="{{ book['url'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <td class="tbody"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ book['url'] }}">Delete</button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                            <div class="modal-content">
                                             <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
-                                            </button>
+                                                </button>
                                             </div>
                                             <div class="modal-body">
-                                                <a class="btn btn-danger"href="/delete/{{ book['_id'] }}">Confirm Delete</a>
+                                                    <a class="btn btn-danger"href="/delete/{{ book['_id'] }}">Confirm Delete</a>
+                                            </div>
+                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                
+                                            </div>
                                             </div>
                                         </div>
-                                        </div>
-                                    </div></td>
+                                    </div>
+                                </td>
+                                    
                                 <!-- Modal -->
                             </tr>
                             {% endfor %}
