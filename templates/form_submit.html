@@ -205,7 +205,7 @@ header::after {
                     <tbody>
                         {% for book in books %}
                         <tr>
-                            <td class="tbody">1</td>
+                            <td class="tbody num"></td>
                             <td class="tbody"><a href="{{ book['url'] }}" target="_blank"><strong>{{ book['title'] }}</strong></a></td>
                             <td class="tbody"><strong>{{ book['genre'] }}</strong></td>
                         </tr>
@@ -236,6 +236,17 @@ header::after {
 
 
               }, false);
+
+
+            var count = $('.num').length
+            alert(count)
+            $('.testimonial').each(function(){
+
+                $(this).append(count)
+                count--
+
+
+            });
         </script>
         
     </body>
