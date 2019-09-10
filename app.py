@@ -69,8 +69,9 @@ print (vectors.shape)
 @app.route('/')
 def form():
 	# Display all books in Database
-    books = db.books.find().count()
-	print("There are {} books".format(books))
+    books = db.books.find()
+	book_count = db.books.count()
+	print(book_count)
     return render_template('form_submit.html', books = books)
 
 #return render_template('form_action.html', book=book)
