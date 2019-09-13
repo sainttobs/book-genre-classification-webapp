@@ -3,3 +3,4 @@ The Web Interface for Testing The Book Classification into Genres based on Title
 It was built with Flask,
 To run on localhost use the command<br>
 <strong>flask run</strong>
+Then visit localhost:5000
